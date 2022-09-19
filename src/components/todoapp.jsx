@@ -1,11 +1,28 @@
+import { useState } from "react";
+export default function Todoapp() {
+  const [title, setTitle] = useState("holaa");
 
-export default function Todoapp(){
-    
+  function handleClick(e) {
+    e.preventDefault();
+    setTitle("Andres")
+  }
+  function handleChange(event) {
+    const value = event.target.value;
+    setTitle(value);
+  }
+  return (
+    <div className="todoContainer">
+      <form className="todoCreateForm">
+        <input onChange={handleChange} className="todoInput" value={title} />
+        <input
+          onClick={handleClick}
+          type="submit"
+          value="Create Todo"
+          className="buttomCreate"
+        />
 
-    return  <div className="todoContainer">
-            <form className="todoCreateForm">
-                <input className="todoInput"/>
-                <input type="submit" value="Create Todo" className="buttomCreate"/>
-            </form>
-        </div>
+        {title}
+      </form>
+    </div>
+  );
 }
